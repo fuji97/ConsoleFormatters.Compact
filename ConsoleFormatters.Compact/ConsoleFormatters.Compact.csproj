@@ -4,6 +4,12 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>Compact Console Formatter</Title>
+        <Description>A compact console formatter for Microsoft.Extensions.Logging for a clean logging experience.</Description>
+        <PackageProjectUrl>https://github.com/fuji97/ConsoleFormatters.Compact</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/fuji97/ConsoleFormatters.Compact/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/fuji97/ConsoleFormatters.Compact</RepositoryUrl>
+        <PackageTags>logging;console;formatter</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

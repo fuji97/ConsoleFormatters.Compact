@@ -13,21 +13,16 @@ public class CompactConsoleFormatter(IOptions<CompactConsoleConfiguration> confi
     private readonly string _red         = Console.IsOutputRedirected ? "" : "\x1b[91m";
     private readonly string _green       = Console.IsOutputRedirected ? "" : "\x1b[92m";
     private readonly string _yellow      = Console.IsOutputRedirected ? "" : "\x1b[93m";
-    private readonly string _blue        = Console.IsOutputRedirected ? "" : "\x1b[94m";
     private readonly string _magenta     = Console.IsOutputRedirected ? "" : "\x1b[95m";
     private readonly string _cyan        = Console.IsOutputRedirected ? "" : "\x1b[96m";
     private readonly string _grey        = Console.IsOutputRedirected ? "" : "\x1b[97m";
     private readonly string _bold        = Console.IsOutputRedirected ? "" : "\x1b[1m";
-    private readonly string _nobold      = Console.IsOutputRedirected ? "" : "\x1b[22m";
-    private readonly string _underline   = Console.IsOutputRedirected ? "" : "\x1b[4m";
-    private readonly string _noUnderline = Console.IsOutputRedirected ? "" : "\x1b[24m";
-    private readonly string _reverse     = Console.IsOutputRedirected ? "" : "\x1b[7m";
-    private readonly string _noreverse   = Console.IsOutputRedirected ? "" : "\x1b[27m";
+    private readonly string _noBold      = Console.IsOutputRedirected ? "" : "\x1b[22m";
      public override void Write<TState>(in LogEntry<TState> logEntry, IExternalScopeProvider? scopeProvider, TextWriter textWriter) {
         var logLevel = configuration.Value.UseEmoji ? FormatLogLevelEmoji(logEntry) : FormatLogLevel(logEntry);
         var message = logEntry.Formatter(logEntry.State, logEntry.Exception);
         var timestamp = DateTime.Now.ToString("HH:mm:ss");
-        var category = configuration.Value.EnableCategory ? $" {_bold}[{logEntry.Category}]{_nobold}" : "";
+        var category = configuration.Value.EnableCategory ? $" {_bold}[{logEntry.Category}]{_noBold}" : "";
          var exception = logEntry.Exception != null ? $"{_nl}{_red}{logEntry.Exception}{_normal}" : "";
          textWriter.WriteLine($"{timestamp} {logLevel}{category} {message}{exception}");
     }
